@@ -47,7 +47,7 @@ end
 #   end
 #   sum
 # end
-
+require "byebug"
 def largest_contiguous_subsum(list)
   sum = list.first
   largest_sum = list.first
@@ -56,22 +56,20 @@ def largest_contiguous_subsum(list)
   j = list.length - 1
 
   while i < list.length - 1
+    # debugger
     sum = list[i..j].sum
     largest_sum = sum if sum > largest_sum
     if i == j
-      j = list.length - 1
+      j = list.length
       i += 1
     end
     j -= 1
   end
-
-  largest_sum
-  
+  largest_sum  
 end
 
-
-    list = [-5, -1, -3]
-    p largest_contiguous_subsum(list) # => 8
+list = [-5, -1, -3]  
+p largest_contiguous_subsum(list) # => 8
     # possible sub-sums
     # [5]           # => 5
     # [5, 3]        # => 8 --> we want this one
